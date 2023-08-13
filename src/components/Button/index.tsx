@@ -12,4 +12,9 @@ const Button: React.FC<InputProps> = ({ children, width, secundary, ...rest }) =
     {children}
   </Container>
 );
+
+Button.defaultProps = {
+  width: 200,
+  secundary: false,
+};
 export default Button;

@@ -1,25 +1,30 @@
 import React, { InputHTMLAttributes, useRef, useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 import { useField } from '@unform/core';
+import { FiAlertCircle } from 'react-icons/all';
 
 import ReactInputMask from 'react-input-mask';
 import { IconType } from 'react-icons';
-import { Container, InputComp, Separator } from './styles';
 import colors from '../../../../style/colors';
+import { Container, InputComp, ShowPasswordButton, Error } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   divClassName?: string;
   inputMask?: string;
   Icon: IconType;
+  isPassword: boolean;
+  clickOnEyeButton?: () => void;
+  EyeIcon?: IconType;
 }
 
 export interface InputRef {
+  // eslint-disable-next-line no-unused-vars
   setValue(value: string): void;
   getValue: () => string;
 }
 
 const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
-  { name, disabled, divClassName, inputMask, defaultValue, Icon, onChange, ...rest },
+  { name, disabled, divClassName, inputMask, defaultValue, Icon, isPassword, clickOnEyeButton, EyeIcon, onChange, ...rest },
   ref,
 ) => {
   const inputRef = useRef<ReactInputMask>(null);
@@ -40,6 +45,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
       name: fieldName,
       ref: inputRef.current,
       path: 'value',
+      // eslint-disable-next-line no-unused-vars
       clearValue: pickerRef => {
         setMask('');
       },
@@ -57,8 +63,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
 
   return (
     <Container className={divClassName} isError={!!error} disabled={disabled}>
-      <Icon size={40} color={colors.secondary} style={{ padding: 5 }} />
-      <Separator />
+      <Icon size={34} color={colors.primary} style={{ padding: 6 }} />
       <InputComp
         name={fieldName}
         mask={inputMask || ''}
@@ -71,6 +76,16 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
         ref={inputRef}
         {...rest}
       />
+      {isPassword && EyeIcon && (
+        <ShowPasswordButton onClick={clickOnEyeButton}>
+          <EyeIcon color={colors.inactive} size={25} />
+        </ShowPasswordButton>
+      )}
+      {error && (
+        <Error title={error}>
+          <FiAlertCircle color={colors.danger} size={20} />
+        </Error>
+      )}
     </Container>
   );
 };

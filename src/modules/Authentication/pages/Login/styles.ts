@@ -5,7 +5,7 @@ import Colors from '../../../../style/colors';
 
 export const LoginButton = styled(Button)`
   background-color: ${Colors.secondary};
-  border-radius: 50px;
+  border-radius: 10px;
   width: 400px;
   height: 60px;
   max-width: 400px;
@@ -13,7 +13,7 @@ export const LoginButton = styled(Button)`
     width: 250px;
   }
   &:hover {
-    background: ${shade(0.1, Colors.secondaryHover)};
+    background: ${shade(0.1, Colors.secondary)};
   }
   &::disabled {
     background: '#0ff';
@@ -32,8 +32,24 @@ export const BackgroundImg = styled.img`
   z-index: -999;
 `;
 
+export const BackgroundMask = styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -998;
+  background: ${Colors.loginBackgroundMask};
+  opacity: 0.8;
+`;
+
+export const LogosContainer = styled.div`
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const LogoImg = styled.img`
-  width: 280px;
+  width: 380px;
   @media (max-width: 600px) {
     width: 250px;
   }

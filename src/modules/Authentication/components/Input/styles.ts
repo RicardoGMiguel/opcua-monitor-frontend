@@ -1,6 +1,8 @@
+/* eslint-disable prettier/prettier */
 import styled, { css } from 'styled-components';
 import InputMask from 'react-input-mask';
 import colors from '../../../../style/colors';
+import Tooltip from '../../../../components/Tooltip';
 
 interface ContainerInterface {
   isError: boolean;
@@ -11,54 +13,49 @@ export const InputComp = styled(InputMask)`
   background: transparent !important;
 `;
 
-export const Separator = styled.div`
-  height: 40px;
-  width: 1px;
-  background: ${colors.loginInputColor};
-  margin-right: 10px;
-  margin-left: 5px;
-`;
-
 export const Container = styled.div<ContainerInterface>`
   display: flex;
   width: 100%;
+  height: 3.2rem;
   align-items: center;
   align-content: center;
-  margin-bottom: 33px;
-  border-bottom: ${colors.loginInputColor} solid 1px;
+  border: 3px solid ${colors.secondary};
+  padding: 0.5rem;
+  background: ${colors.inputBackground};
+  box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+
   ${props =>
     props.isError &&
     css`
-      border-color: #c53030;
+      border-color: ${colors.danger};
     `}
   ${props =>
     props.disabled &&
     css`
       cursor: not-allowed;
-      background-color: #f8f8f8;
-      color: #e0e0e0;
+      background-color: ${colors.inputBackground};
+      color: ${colors.inactive};
     `}
     input:-webkit-autofill,
     textarea:-webkit-autofill,
-    select:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px ${colors.secondary} inset !important;
-    -webkit-text-fill-color: black !important;
-  }
+
   input {
     font-size: 1.2em;
     flex: 1;
     width: 80%;
     background: transparent;
     border: 0;
-    color: #e0e0e0;
+    color: ${colors.text};
     &::placeholder {
-      color: ${colors.loginInputColor};
+      color: ${colors.inactive};
     }
     ${props =>
-      props.disabled &&
-      css`
+    props.disabled &&
+    css`
         cursor: not-allowed;
-        color: #e0e0e0;
+        color: ${colors.inactive};
       `}
   }
   @media (max-width: 600px) {
@@ -66,4 +63,29 @@ export const Container = styled.div<ContainerInterface>`
       font-size: 1rem;
     }
   }
+`;
+
+export const Error = styled(Tooltip)`
+  height: 20px;
+  margin-left: 16px;
+
+  svg {
+    margin: 0;
+  }
+
+  span {
+    background: ${colors.danger};
+    color: ${colors.lightText};
+
+    &::before {
+      border-color: ${colors.danger} transparent;
+    }
+  }
+`;
+
+export const ShowPasswordButton = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

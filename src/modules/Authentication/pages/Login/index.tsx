@@ -9,16 +9,19 @@ import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../../../hooks/toast';
 import getValidationErrors from '../../../../utils/getValidationsErrors';
 
-import logoImg from '../../../../assets/logo.png';
-import backgroundImg from '../../../../assets/background.png';
+import backgroundImg from '../../../../assets/background.jpg';
+import opcuaImg from '../../../../assets/opcua-logo.png';
+import mqttImg from '../../../../assets/mqtt-logo.png';
+import azureImg from '../../../../assets/azure-logo.png';
+import dockerImg from '../../../../assets/docker-logo.png';
 
 import Input, { InputRef } from '../../components/Input';
 
-import { Container, Content, BackgroundImg, LogoImg, LoginButton } from './styles';
+import { Container, Content, BackgroundImg, BackgroundMask, LogosContainer, LogoImg, LoginButton } from './styles';
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-  const usernameRef = useRef<InputRef>(null);
+  const emailRef = useRef<InputRef>(null);
   const passwordRef = useRef<InputRef>(null);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +33,7 @@ const SignIn: React.FC = () => {
   const handleSubmit = useCallback(async () => {
     try {
       const data = {
-        username: usernameRef.current?.getValue() || '',
+        email: emailRef.current?.getValue() || '',
         password: passwordRef.current?.getValue() || '',
       };
 
@@ -38,7 +41,7 @@ const SignIn: React.FC = () => {
       formRef.current?.setErrors({});
 
       const schema = Yup.object().shape({
-        username: Yup.string().required('Nome é obrigatório'),
+        email: Yup.string().required('E-mail é obrigatório'),
         password: Yup.string().required('Senha obrigatória'),
       });
 
@@ -73,13 +76,19 @@ const SignIn: React.FC = () => {
 
   return (
     <Container>
+      <BackgroundMask />
       <BackgroundImg src={backgroundImg} />
       <Content>
-        <LogoImg src={logoImg} alt="logo empresa" />
+        <LogosContainer>
+          <LogoImg src={opcuaImg} alt="opcua" />
+          <LogoImg src={mqttImg} alt="mqtt" />
+          <LogoImg src={azureImg} alt="azure" />
+          <LogoImg src={dockerImg} alt="docker" />
+        </LogosContainer>
         <Form ref={formRef} onSubmit={handleSubmit}>
-          <Input ref={usernameRef} name="username" placeholder="Usuário" Icon={FiUser} />
+          <Input isPassword={false} ref={emailRef} name="email" placeholder="email" Icon={FiUser} />
 
-          <Input ref={passwordRef} name="password" type="password" placeholder="Senha" Icon={FiUnlock} />
+          <Input isPassword ref={passwordRef} name="password" type="password" placeholder="Senha" Icon={FiUnlock} />
         </Form>
         <LoginButton disabled={isLoading} type="submit" onClick={handleSubmit}>
           Entrar
