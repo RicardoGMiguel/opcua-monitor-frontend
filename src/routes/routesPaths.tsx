@@ -1,7 +1,12 @@
 export const app = {
-  home: '/app',
+  app: '/app',
+  auth: '/auth',
 };
 
 export const authentication = {
-  login: '/app/login',
+  login: `${app.auth}/login`,
+};
+
+export const home = {
+  main: `${app.app}/home`,
 };

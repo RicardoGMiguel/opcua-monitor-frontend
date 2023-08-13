@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { createContext, useCallback, useState, useContext, useEffect } from 'react';
 
 import { IUser } from '../../../../interfaces';
@@ -24,12 +25,30 @@ interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const storageVariables = {
-  token: '@App:token',
-  user: '@App:user',
+  token: '@Opcua_Monitor:token',
+  user: '@Opcua_Monitor:user',
 };
 
 const AuthProvider: React.FC = ({ children }) => {
   const { addToast } = useToast();
+
+  const signOut = useCallback(
+    (message?: string) => {
+      localStorage.removeItem(storageVariables.token);
+      localStorage.removeItem(storageVariables.user);
+      if (message) {
+        addToast({
+          title: 'Erro de autenticação',
+          type: 'error',
+          description: message,
+        });
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
+      setData({} as AuthState);
+    },
+    [addToast],
+  );
 
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem(storageVariables.token);
@@ -45,23 +64,6 @@ const AuthProvider: React.FC = ({ children }) => {
 
     return {} as AuthState;
   });
-
-  const signOut = useCallback(
-    (message?: string) => {
-      localStorage.removeItem(storageVariables.token);
-      localStorage.removeItem(storageVariables.user);
-      if (message) {
-        addToast({
-          title: 'Erro de autenticação',
-          type: 'error',
-          description: message,
-        });
-      }
-
-      setData({} as AuthState);
-    },
-    [addToast],
-  );
 
   useEffect(() => {
     const user = localStorage.getItem(storageVariables.user);

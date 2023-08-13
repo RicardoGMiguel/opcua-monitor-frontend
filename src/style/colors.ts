@@ -6,4 +6,5 @@ export default {
   inactive: '#D0D0D0D0',
   loginInputColor: '#9D9D9D',
   text: '#003860',
+  background: '#fefefe',
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route as ReactDOMRoute, RouteProps as ReactDOMRouteProps, Redirect } from 'react-router-dom';
+import * as paths from './routesPaths';
 
 import { useAuth } from '../modules/Authentication/hooks/auth';
 
@@ -15,19 +16,27 @@ const Route: React.FC<RouteProps> = ({ isPrivate = false, component: Component, 
     <ReactDOMRoute
       {...rest}
       render={({ location }) => {
-        return isPrivate === !!user ? (
-          <Component />
-        ) : (
-          <Redirect
-            to={{
-              pathname: isPrivate ? '/app/login' : '/app',
-              state: { from: location },
-            }}
-          />
-        );
+        if (isPrivate) {
+          if (user) return <Component />;
+
+          return (
+            <Redirect
+              to={{
+                pathname: paths.authentication.login,
+                state: { from: location },
+              }}
+            />
+          );
+        }
+
+        return <Component />;
       }}
     />
   );
+};
+
+Route.defaultProps = {
+  isPrivate: false,
 };
 
 export default Route;
