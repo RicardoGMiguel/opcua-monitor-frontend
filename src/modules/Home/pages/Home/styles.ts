@@ -18,3 +18,15 @@ export const Container = styled.div`
   flex-direction: column;
   animation: ${appearFromLeft} 0.6s;
 `;
+
+export const Content = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ClearButtonContainer = styled.div`
+  align-self: flex-end;
+`;

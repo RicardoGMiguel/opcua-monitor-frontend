@@ -21,4 +21,5 @@ export const configureApi = (token: string, signOut: () => void) => {
 
 export const apiRoutes = {
   users: '/users',
+  messages: '/messages',
 };
