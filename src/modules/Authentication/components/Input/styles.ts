@@ -49,7 +49,7 @@ export const Container = styled.div<ContainerInterface>`
     border: 0;
     color: ${colors.text};
     &::placeholder {
-      color: ${colors.inactive};
+      color: ${colors.placeholder};
     }
     ${props =>
     props.disabled &&

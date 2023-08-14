@@ -63,7 +63,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
 
   return (
     <Container className={divClassName} isError={!!error} disabled={disabled}>
-      <Icon size={34} color={colors.primary} style={{ padding: 6 }} />
+      <Icon size={34} color={colors.iconColor} style={{ padding: 6 }} />
       <InputComp
         name={fieldName}
         mask={inputMask || ''}
@@ -78,7 +78,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
       />
       {isPassword && EyeIcon && (
         <ShowPasswordButton onClick={clickOnEyeButton}>
-          <EyeIcon color={colors.inactive} size={25} />
+          <EyeIcon color={colors.iconColor} size={25} />
         </ShowPasswordButton>
       )}
       {error && (

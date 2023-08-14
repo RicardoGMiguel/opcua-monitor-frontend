@@ -1,11 +1,44 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
+import { format } from 'date-fns';
+import { MdDateRange, FaRegClock, FiLogOut } from 'react-icons/all';
+import opcuaImg from '../../assets/opcua-logo.png';
+import mqttImg from '../../assets/mqtt-logo.png';
+import azureImg from '../../assets/azure-logo.png';
+import dockerImg from '../../assets/docker-logo.png';
+import { useAuth } from '../../modules/Authentication/hooks/auth';
 
-import { Container } from './styles';
+import { Container, LogoContainer, LogoImg, DateTimeContainer, LogoutButton } from './styles';
 
 const Header: React.FC = ({ ...rest }) => {
+  const { signOut } = useAuth();
+  const [dateNow, setDateNow] = useState(new Date(Date.now()));
+
+  const updateClock = useCallback(() => {
+    setDateNow(new Date(Date.now()));
+  }, []);
+
+  setTimeout(updateClock, 1000);
   return (
     <Container {...rest}>
-      <h1>Header</h1>
+      <LogoContainer>
+        <LogoImg src={opcuaImg} alt="opcua" />
+        <LogoImg src={mqttImg} alt="mqtt" />
+        <LogoImg src={azureImg} alt="azure" />
+        <LogoImg src={dockerImg} alt="docker" />
+      </LogoContainer>
+      <DateTimeContainer>
+        <div>
+          <MdDateRange size={30} />
+          <h1>{format(dateNow, 'dd/MM/yyyy')}</h1>
+        </div>
+        <div>
+          <FaRegClock size={30} />
+          <h1>{format(dateNow, 'HH:mm:ss')}</h1>
+        </div>
+      </DateTimeContainer>
+      <LogoutButton onClick={() => signOut()}>
+        <FiLogOut size={40} />
+      </LogoutButton>
     </Container>
   );
 };

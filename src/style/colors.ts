@@ -1,5 +1,5 @@
 export default {
-  primary: '#083247',
+  primary: '#dfe3ed',
   secondary: '#2a4ba1',
   secondaryHover: '#a1a63c',
   danger: '#E92020',
@@ -10,4 +10,6 @@ export default {
   loginBackgroundMask: '#8a8a8a',
   lightText: '#ffffff',
   inputBackground: '#e2e2e2',
+  iconColor: '#2160ff',
+  placeholder: '#828282',
 };
