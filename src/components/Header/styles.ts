@@ -16,12 +16,19 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 400px) {
+    width: 80%;
+  }
 `;
 
 export const LogoImg = styled.img`
   width: 220px;
   @media (max-width: 600px) {
-    width: 800px;
+    width: 100px;
+  }
+  @media (max-width: 400px) {
+    width: 80px;
   }
 `;
 
@@ -33,6 +40,10 @@ export const DateTimeContainer = styled.div`
   width: 15%;
   height: 2.8rem;
   margin-right: 20px;
+
+  @media (max-width: 400px) {
+    display: none;
+  }
 
   > div {
     display: flex;
@@ -47,6 +58,7 @@ export const DateTimeContainer = styled.div`
     > h1 {
       font-size: 1.4rem;
       color: ${colors.text};
+      margin: 0;
     }
   }
 `;

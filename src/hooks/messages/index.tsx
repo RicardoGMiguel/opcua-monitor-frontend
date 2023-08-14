@@ -32,8 +32,8 @@ const MessageProvider: React.FC = ({ children }) => {
       },
       {
         // change the key so data can update
-        staleTime: 1000 * 60, // 10min
-        refetchInterval: 1000,
+        // staleTime: 1000 * 60, // 10min
+        // refetchInterval: 5000,
         ...options,
       },
     );

@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import colors from '../../../../style/colors';
 
 const appearFromLeft = keyframes`
   from {
@@ -29,4 +30,15 @@ export const Content = styled.div`
 
 export const ClearButtonContainer = styled.div`
   align-self: flex-end;
+  width: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  svg {
+    color: ${colors.iconColor};
+    :hover {
+      cursor: pointer;
+    }
+  }
 `;
