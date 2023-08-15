@@ -34,6 +34,15 @@ export const ClearButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1rem;
+
+  @media (max-width: 900px) {
+    width: 12%;
+  }
+
+  @media (max-width: 400px) {
+    width: 30%;
+  }
 
   svg {
     color: ${colors.iconColor};

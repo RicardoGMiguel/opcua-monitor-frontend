@@ -7,7 +7,7 @@ export const LoginButton = styled(Button)`
   background-color: ${Colors.secondary};
   border-radius: 10px;
   width: 400px;
-  height: 60px;
+  height: 50px;
   max-width: 400px;
   @media (max-width: 600px) {
     width: 250px;
@@ -43,16 +43,22 @@ export const BackgroundMask = styled.div`
 
 export const LogosContainer = styled.div`
   display: flex;
-  width: 90%;
+  width: 80%;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 600px) {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
 export const LogoImg = styled.img`
-  width: 380px;
-  @media (max-width: 600px) {
-    width: 250px;
-  }
+  width: 250px;
 `;
 
 export const Content = styled.div`

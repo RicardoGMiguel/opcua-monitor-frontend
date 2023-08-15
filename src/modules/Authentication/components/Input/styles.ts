@@ -16,7 +16,7 @@ export const InputComp = styled(InputMask)`
 export const Container = styled.div<ContainerInterface>`
   display: flex;
   width: 100%;
-  height: 3.2rem;
+  height: 3rem;
   align-items: center;
   align-content: center;
   border: 3px solid ${colors.secondary};
@@ -42,7 +42,7 @@ export const Container = styled.div<ContainerInterface>`
     textarea:-webkit-autofill,
 
   input {
-    font-size: 1.2em;
+    font-size: 1.2rem;
     flex: 1;
     width: 80%;
     background: transparent;

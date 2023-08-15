@@ -28,16 +28,16 @@ const Header: React.FC = ({ ...rest }) => {
       </LogoContainer>
       <DateTimeContainer>
         <div>
-          <MdDateRange size={30} />
+          <MdDateRange size={20} />
           <h1>{format(dateNow, 'dd/MM/yyyy')}</h1>
         </div>
         <div>
-          <FaRegClock size={30} />
+          <FaRegClock size={20} />
           <h1>{format(dateNow, 'HH:mm:ss')}</h1>
         </div>
       </DateTimeContainer>
       <LogoutButton onClick={() => signOut()}>
-        <FiLogOut size={40} />
+        <FiLogOut size={25} />
       </LogoutButton>
     </Container>
   );

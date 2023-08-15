@@ -9,6 +9,16 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 2rem;
+
+  @media (max-width: 900px) {
+    padding: 1.2rem;
+    height: 9vh;
+  }
+
+  @media (max-width: 400px) {
+    padding: 1rem;
+    height: 8vh;
+  }
 `;
 
 export const LogoContainer = styled.div`
@@ -17,18 +27,24 @@ export const LogoContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 900px) {
+    width: 60%;
+  }
+
   @media (max-width: 400px) {
-    width: 80%;
+    width: 90%;
   }
 `;
 
 export const LogoImg = styled.img`
-  width: 220px;
-  @media (max-width: 600px) {
+  width: 170px;
+
+  @media (max-width: 900px) {
     width: 100px;
   }
-  @media (max-width: 400px) {
-    width: 80px;
+
+  @media (max-width: 600px) {
+    width: 70px;
   }
 `;
 
@@ -38,8 +54,12 @@ export const DateTimeContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 15%;
-  height: 2.8rem;
+  height: 1.8rem;
   margin-right: 20px;
+
+  @media (max-width: 900px) {
+    width: 25%;
+  }
 
   @media (max-width: 400px) {
     display: none;
@@ -56,9 +76,13 @@ export const DateTimeContainer = styled.div`
     }
 
     > h1 {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: ${colors.text};
       margin: 0;
+
+      @media (max-width: 900px) {
+        font-size: 1rem;
+      }
     }
   }
 `;

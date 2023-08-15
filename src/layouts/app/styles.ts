@@ -38,4 +38,8 @@ export const PageContainer = styled.div`
   position: relative;
   overflow-x: none;
   animation: ${appearFromLeft} 0.6s;
+
+  @media (max-width: 900px) {
+    padding: 1.5rem;
+  }
 `;

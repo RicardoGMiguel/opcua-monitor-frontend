@@ -33,8 +33,8 @@ const Home: React.FC = () => {
   return (
     <Container>
       <ClearButtonContainer>
-        <IoMdTrash size={50} onClick={HandleClear} />
-        <MdRefresh size={50} onClick={() => refetch()} />
+        <IoMdTrash size={35} onClick={HandleClear} />
+        <MdRefresh size={35} onClick={() => refetch()} />
       </ClearButtonContainer>
       {isFetching ? (
         <SpinnerLoader />
