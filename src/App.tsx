@@ -9,7 +9,7 @@ import GlobalStyle from './style/global';
 
 const App: React.FC = () => {
   useEffect(() => {
-    document.title = 'Novo Titulo';
+    document.title = 'OPC UA - Monitor';
   }, []);
 
   return (
