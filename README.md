@@ -1,46 +1,73 @@
-# Getting Started with Create React App
+# opcua-monitor-frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Repositório para código fonte da aplicação front-end do projeto OPC-UA Monitor.
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+Passo a passo para instalação em uma máquina virtual na plataforma Microsoft Azure:
 
-### `yarn start`
+<sub>Se já existe uma máquina virtual Ubuntu na Azure preparada, inicie clonando o repositório</sub>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Criação de um resource group
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Entre no portal Azure e crie um Resource Group
 
-### `yarn test`
+### Criação de uma máquina virtual
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Crie uma Máquina Virtual Ubuntu 20.04 na Azure alterando as seguintes especificações:
 
-### `yarn build`
+- Availability options: No insfrastructure redundancy required
+- Image: Ubuntu Server 20.04 LTS
+- Select inbound ports: 80 (HTTP)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Durante o processo faça o download da chave ssh.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Acesso à máquina virtual
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Abra um terminal e acesse a máquina virtual criada alterando o inserindo o IP público da máquina:
 
-### `yarn eject`
+```
+  ssh -i ~/Downloads/OpcuaMonitorVM_key.pem azureuser@IP_PÙBLICO
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+###
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Instale o Node.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+```
+```
+sudo apt-get install -y nodejs
+```
+###
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Instale o yarn
 
-## Learn More
+```
+sudo npm install yarn -g
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Instalação do front-end
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Clone o repositório
+
+```
+git clone https://github.com/RicardoGMiguel/opcua-monitor-frontend.git
+```
+
+###
+
+- Instale as dependências
+
+```
+cd opcua-monitor-frontend
+```
+```
+yarn
+```
+```
+cd
+```
+
+
