@@ -1,50 +1,31 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
-
-import BackdropContainer from '../../components/BackdropContainer';
-
-export interface BackdropInformations {
-  show?: boolean;
-  type?: 'confirmation';
-  text: string;
-  onConfirm?(): void;
-}
+import Backdrop from '../../components/Backdrop/BackdropContainer';
 
 interface BackdropContextData {
-  addBackdrop(informations: Omit<BackdropInformations, 'show'>): void;
-  removeBackdrop(): void;
-  isBackdropVisible: boolean;
+  // eslint-disable-next-line no-unused-vars
+  showBackdrop: (page: React.ReactElement) => void;
+  hidePage: () => void;
 }
 
 const BackdropContext = createContext<BackdropContextData>({} as BackdropContextData);
 
 const BackdropProvider: React.FC = ({ children }) => {
-  const [information, setInformations] = useState<BackdropInformations>({
-    type: 'confirmation',
-    text: '',
-    show: false,
-  });
+  const [currentPage, setCurrentPage] = useState<React.ReactElement>();
   const [isVisible, setIsVisible] = useState(false);
 
-  const addBackdrop = useCallback(({ type, onConfirm, text }: Omit<BackdropInformations, 'show'>) => {
-    const backdrop = {
-      type,
-      onConfirm,
-      text,
-      show: true,
-    };
+  const showBackdrop = useCallback((page: React.ReactElement) => {
+    setCurrentPage(page);
     setIsVisible(true);
-    return setInformations({ ...backdrop });
   }, []);
 
-  const removeBackdrop = useCallback(() => {
-    setTimeout(() => setIsVisible(false), 800);
-    setInformations({ type: 'confirmation', text: '', show: false, onConfirm: () => ({}) });
+  const hidePage = useCallback(() => {
+    setIsVisible(false);
   }, []);
 
   return (
-    <BackdropContext.Provider value={{ addBackdrop, removeBackdrop, isBackdropVisible: isVisible }}>
+    <BackdropContext.Provider value={{ showBackdrop, hidePage }}>
       {children}
-      <BackdropContainer {...information} />
+      <Backdrop visible={isVisible}>{currentPage}</Backdrop>
     </BackdropContext.Provider>
   );
 };
