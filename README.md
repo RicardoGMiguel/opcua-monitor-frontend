@@ -58,13 +58,16 @@ git clone https://github.com/RicardoGMiguel/opcua-monitor-frontend.git
 
 ###
 
-- Instale as dependências
+- Instale as dependências e gere os arquivos de produção
 
 ```
 cd opcua-monitor-frontend
 ```
 ```
 yarn
+```
+```
+yarn build
 ```
 ```
 cd
