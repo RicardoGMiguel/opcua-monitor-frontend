@@ -2,12 +2,37 @@ import { shade } from 'polished';
 import styled from 'styled-components';
 import Button from '../../../../components/Button';
 import Colors from '../../../../style/colors';
+import signInBackgroungImg from '../../../../assets/background.jpg';
+
+export const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 700px;
+
+  form {
+    width: 50%;
+    text-align: center;
+
+    @media (max-width: 600px) {
+      width: 80%;
+    }
+  }
+`;
 
 export const LoginButton = styled(Button)`
   background-color: ${Colors.secondary};
   border-radius: 10px;
-  width: 400px;
-  height: 50px;
+  width: 30%;
+  height: 45px;
   max-width: 400px;
   @media (max-width: 600px) {
     width: 250px;
@@ -20,60 +45,32 @@ export const LoginButton = styled(Button)`
   }
 `;
 
-export const Container = styled.div`
-  height: 100vh;
-  display: flex;
-`;
-
-export const BackgroundImg = styled.img`
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: -999;
-`;
-
-export const BackgroundMask = styled.div`
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: -998;
-  background: ${Colors.loginBackgroundMask};
-  opacity: 0.8;
-`;
-
 export const LogosContainer = styled.div`
   display: flex;
+  flex-direction: column;
   width: 80%;
   align-items: center;
-  justify-content: space-between;
 
-  @media (max-width: 600px) {
-    width: 50%;
-    height: 50%;
+  > div {
     display: flex;
-    flex-direction: column;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 `;
 
 export const LogoImg = styled.img`
   width: 250px;
+
+  @media (max-width: 600px) {
+    width: 150px;
+  }
 `;
 
-export const Content = styled.div`
+export const Background = styled.div`
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-
-  form {
-    width: 400px;
-    text-align: center;
-
-    @media (max-width: 600px) {
-      width: 250px;
-    }
-  }
+  background: url(${signInBackgroungImg}) no-repeat center;
+  background-size: cover;
 `;

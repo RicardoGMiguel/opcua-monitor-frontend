@@ -16,10 +16,10 @@ export const InputComp = styled(InputMask)`
 export const Container = styled.div<ContainerInterface>`
   display: flex;
   width: 100%;
-  height: 3rem;
+  height: 2.5rem;
   align-items: center;
   align-content: center;
-  border: 3px solid ${colors.secondary};
+  border: 1.5px solid ${colors.secondary};
   padding: 0.5rem;
   background: ${colors.inputBackground};
   box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.05);
