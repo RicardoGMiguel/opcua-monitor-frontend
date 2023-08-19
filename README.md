@@ -100,4 +100,36 @@ sudo cp -r opcua-monitor-frontend/build/* /var/www/html/react/
 sudo chown -R $USER:$USER /var/www/html/react
 ```
 
+- Crie um arquivo de configuração
+```
+sudo nano /etc/nginx/conf.d/react.conf
+```
+
+- Insira o seguinte código no arquivo IP público da máquina:
+
+```
+server {
+         listen 80;
+         listen [::]:80;
+         root /var/www/html/react/;
+         index index.html index.htm;
+         # MODIFY SERVER_NAME EXAMPLE
+         server_name IP_PUBLICO;
+         location / {
+              try_files $uri /index.html;
+         }
+}
+```
+
+- Verifique possíveis erros de sintaxe
+
+```
+sudo nginx -t
+```
+
+- Reinicie o nginx
+```
+sudo systemctl restart nginx
+```
+
 
