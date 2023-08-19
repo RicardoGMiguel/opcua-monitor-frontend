@@ -73,4 +73,31 @@ yarn build
 cd
 ```
 
+###
+
+- Instale o nginx
+
+```
+sudo apt update
+```
+```
+sudo apt install nginx
+```
+
+### Configuração do nginx
+
+- Copie o conteúdo do diretório build para um nova diretório
+ 
+```
+sudo mkdir /var/www/html/react
+```
+```
+sudo cp -r opcua-monitor-frontend/build/* /var/www/html/react/
+```
+
+- Ajuste a propriedade do diretório criado
+```
+sudo chown -R $USER:$USER /var/www/html/react
+```
+
 
