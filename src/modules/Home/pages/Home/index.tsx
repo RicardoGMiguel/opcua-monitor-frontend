@@ -1,14 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { format } from 'date-fns';
-import { MdRefresh, IoMdTrash } from 'react-icons/all';
+import { MdRefresh, FiTrash2 } from 'react-icons/all';
 import { useMessage } from '../../../../hooks/messages';
 import { IGraphMessage } from '../../../../interfaces';
 import { Container, Content, ClearButtonContainer } from './styles';
 import SpinnerLoader from '../../../../components/SpinnerLoader';
+import Confirmation from '../../../../components/Backdrop/Confirmation';
+import { useBackdrop } from '../../../../hooks/backdrop';
+import colors from '../../../../style/colors';
 
 const Home: React.FC = () => {
   const { GetMessages, ClearMessages } = useMessage();
+  const { showBackdrop } = useBackdrop();
   const [messages, setMessages] = useState<IGraphMessage[]>([]);
 
   const { data, refetch, isFetching } = GetMessages();
@@ -27,13 +31,22 @@ const Home: React.FC = () => {
   }, [data]);
 
   const HandleClear = useCallback(async () => {
-    ClearMessages();
-  }, [ClearMessages]);
+    showBackdrop(
+      <Confirmation
+        Icon={FiTrash2}
+        iconColor={colors.iconColor}
+        title="Deseja excluir as mensagens?"
+        onConfirm={async () => {
+          ClearMessages();
+        }}
+      />,
+    );
+  }, [showBackdrop, ClearMessages]);
 
   return (
     <Container>
       <ClearButtonContainer>
-        <IoMdTrash size={35} onClick={HandleClear} />
+        <FiTrash2 size={35} onClick={HandleClear} />
         <MdRefresh size={35} onClick={() => refetch()} />
       </ClearButtonContainer>
       {isFetching ? (
