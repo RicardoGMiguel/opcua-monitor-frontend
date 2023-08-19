@@ -95,15 +95,21 @@ sudo mkdir /var/www/html/react
 sudo cp -r opcua-monitor-frontend/build/* /var/www/html/react/
 ```
 
+###
+
 - Ajuste a propriedade do diretório criado
 ```
 sudo chown -R $USER:$USER /var/www/html/react
 ```
 
+### 
+
 - Crie um arquivo de configuração
 ```
 sudo nano /etc/nginx/conf.d/react.conf
 ```
+
+### 
 
 - Insira o seguinte código no arquivo IP público da máquina:
 
@@ -121,15 +127,44 @@ server {
 }
 ```
 
+###
+
 - Verifique possíveis erros de sintaxe
 
 ```
 sudo nginx -t
 ```
 
+###
+
 - Reinicie o nginx
 ```
 sudo systemctl restart nginx
 ```
+
+### Acesso à aplicação
+
+Insira no navegador o seguinte endereço com o IP_PUBLICO da máquina:
+
+```
+http://IP_PUBLICO
+```
+
+###
+
+Faça o login com as seguintes credenciais:
+
+###
+email
+```
+admin@opc.com
+```
+
+###
+senha
+```
+opc@2023
+```
+
 
 
