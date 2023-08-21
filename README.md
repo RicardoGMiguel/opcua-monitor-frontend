@@ -30,7 +30,7 @@ Abra um terminal e acesse a máquina virtual criada alterando o inserindo o IP p
   ssh -i ~/Downloads/OpcuaMonitorVM_key.pem azureuser@IP_PÙBLICO
 ```
 
-###
+### Preparação do servidor
 
 - Instale o Node.js
 
