@@ -111,7 +111,7 @@ sudo nano /etc/nginx/conf.d/react.conf
 
 ### 
 
-- Insira o seguinte código no arquivo IP público da máquina:
+- Insira o seguinte código no arquivo criado alterando o server_name para o IP público da máquina:
 
 ```
 server {
